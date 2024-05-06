@@ -1,0 +1,134 @@
+ConfirmationDeleteScreen As screen:
+    Fill: =RGBA(250, 250, 250, 1)
+    Height: =Max(App.Height, App.DesignHeight)
+    Width: =Max(App.Width, App.DesignWidth)
+
+    ConfirmationDeleteScreenDeleteIcon As icon.Trash:
+        BorderColor: =RGBA(255, 102, 102, 1)
+        Color: =RGBA(158, 11, 15, 1)
+        DisabledBorderColor: =RGBA(159, 167, 165, 1)
+        DisabledColor: =RGBA(193, 193, 193, 0.95)
+        DisabledFill: =ConfirmationDeleteScreenDeleteIcon.Fill
+        FocusedBorderColor: =ConfirmationDeleteScreenDeleteIcon.BorderColor
+        Height: =112
+        HoverBorderColor: =ColorFade(ConfirmationDeleteScreenDeleteIcon.BorderColor, 20%)
+        HoverColor: =ColorFade(ConfirmationDeleteScreenDeleteIcon.Color, 20%)
+        HoverFill: =ConfirmationDeleteScreenDeleteIcon.Fill
+        Icon: =Icon.Trash
+        PressedBorderColor: =ColorFade(ConfirmationDeleteScreenDeleteIcon.BorderColor, -20%)
+        PressedColor: =ColorFade(ConfirmationDeleteScreenDeleteIcon.Color, -20%)
+        PressedFill: =ConfirmationDeleteScreenDeleteIcon.Fill
+        Width: =94
+        X: =273
+        Y: =271
+        ZIndex: =1
+
+    ConfirmationDeleteScreenTitle As label:
+        Align: =LayoutAlignItems.Center
+        BorderColor: =RGBA(255, 102, 102, 1)
+        Color: =RGBA(47,41,43,1)
+        DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+        FocusedBorderColor: =ConfirmationDeleteScreenTitle.BorderColor
+        Height: =61
+        HoverBorderColor: =ConfirmationDeleteScreenTitle.BorderColor
+        HoverColor: =ConfirmationDeleteScreenTitle.Color
+        HoverFill: =ConfirmationDeleteScreenTitle.Fill
+        PressedBorderColor: =ConfirmationDeleteScreenTitle.BorderColor
+        PressedColor: =ConfirmationDeleteScreenTitle.Color
+        PressedFill: =ConfirmationDeleteScreenTitle.Fill
+        Size: =27
+        Text: |-
+            ="Delete help desk ticket:"
+        Width: =527
+        X: =56
+        Y: =463
+        ZIndex: =2
+
+    ConfirmationDeleteScreenTicketTitle As label:
+        Align: =LayoutAlignItems.Center
+        BorderColor: =RGBA(255, 102, 102, 1)
+        Color: =RGBA(47,41,43,1)
+        DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+        FocusedBorderColor: =ConfirmationDeleteScreenTicketTitle.BorderColor
+        Height: =75
+        HoverBorderColor: =ConfirmationDeleteScreenTicketTitle.BorderColor
+        HoverColor: =ConfirmationDeleteScreenTicketTitle.Color
+        HoverFill: =ConfirmationDeleteScreenTicketTitle.Fill
+        PaddingBottom: =0
+        PaddingTop: =0
+        PressedBorderColor: =ConfirmationDeleteScreenTicketTitle.BorderColor
+        PressedColor: =ConfirmationDeleteScreenTicketTitle.Color
+        PressedFill: =ConfirmationDeleteScreenTicketTitle.Fill
+        Size: =23
+        Text: =TicketToDelete.Title
+        VerticalAlign: =VerticalAlign.Top
+        Width: =560
+        X: =56
+        Y: =620
+        ZIndex: =3
+
+    ConfirmationDeleteScreenCancelButton As button:
+        BorderColor: =RGBA(158, 11, 15, 1)
+        Color: =RGBA(158, 11, 15, 1)
+        DisabledBorderColor: =ColorFade(ConfirmationDeleteScreenCancelButton.BorderColor, 70%)
+        DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+        DisabledFill: =ColorFade(RGBA(159, 167, 165, 1), 50%)
+        Fill: =RGBA(255, 255, 255, 1)
+        FocusedBorderColor: =ConfirmationDeleteScreenCancelButton.BorderColor
+        Height: =54
+        HoverBorderColor: =ColorFade(ConfirmationDeleteScreenCancelButton.BorderColor, 20%)
+        HoverColor: =ConfirmationDeleteScreenCancelButton.Color
+        HoverFill: =ColorFade(ConfirmationDeleteScreenCancelButton.Fill, 20%)
+        OnSelect: =Back()
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        PressedBorderColor: =ConfirmationDeleteScreenCancelButton.Fill
+        PressedColor: =ConfirmationDeleteScreenCancelButton.Fill
+        PressedFill: =ConfirmationDeleteScreenCancelButton.Color
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =18
+        Text: ="CANCEL"
+        Width: =129
+        X: =165
+        Y: =812
+        ZIndex: =4
+
+    ConfirmationDeleteScreenDeleteButton As button:
+        BorderColor: =RGBA(158, 11, 15, 1)
+        DisabledBorderColor: =ColorFade(ConfirmationDeleteScreenDeleteButton.BorderColor, 70%)
+        DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+        DisabledFill: =ColorFade(RGBA(159, 167, 165, 1), 50%)
+        Fill: =RGBA(158, 11, 15, 1)
+        FocusedBorderColor: =ConfirmationDeleteScreenDeleteButton.BorderColor
+        Height: =54
+        HoverBorderColor: =ColorFade(ConfirmationDeleteScreenDeleteButton.BorderColor, 20%)
+        HoverColor: =ConfirmationDeleteScreenDeleteButton.Color
+        HoverFill: =ColorFade(ConfirmationDeleteScreenDeleteButton.Fill, 20%)
+        OnSelect: |-
+            =Remove(Ticket, TicketToDelete);
+            ForAll(FilesToDelete,
+            AzureBlobStorage.DeleteFile(ThisRecord.Id));
+            Navigate(MyTicketsScreen,ScreenTransition.None)
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        PressedBorderColor: =ConfirmationDeleteScreenDeleteButton.Fill
+        PressedColor: =ConfirmationDeleteScreenDeleteButton.Fill
+        PressedFill: =ConfirmationDeleteScreenDeleteButton.Color
+        RadiusBottomLeft: =20
+        RadiusBottomRight: =20
+        RadiusTopLeft: =20
+        RadiusTopRight: =20
+        Size: =18
+        Text: ="DELETE"
+        Width: =129
+        X: =346
+        Y: =812
+        ZIndex: =5
+

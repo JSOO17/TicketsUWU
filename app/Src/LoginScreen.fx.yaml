@@ -1,0 +1,90 @@
+LoginScreen As screen:
+    BackgroundImage: =
+    Fill: =RGBA(56, 86, 153, 30%)
+    Height: =Max(App.Height, App.DesignHeight)
+    ImagePosition: =ImagePosition.Fill
+    OnVisible: =Set(ShowAccessError,false)
+    Width: =Max(App.Width, App.DesignWidth)
+
+    BackGround As image:
+        BorderColor: =RGBA(255, 102, 102, 1)
+        DisabledBorderColor: =RGBA(159, 167, 165, 1)
+        DisabledFill: =RGBA(193, 193, 193, 0.95)
+        FocusedBorderColor: =BackGround.BorderColor
+        Height: =1136
+        HoverBorderColor: =ColorFade(BackGround.BorderColor, 20%)
+        HoverFill: =ColorFade(BackGround.Fill, 20%)
+        Image: ='photo-helpdeskadmin'
+        ImagePosition: =ImagePosition.Fill
+        PressedBorderColor: =ColorFade(BackGround.BorderColor, -20%)
+        PressedFill: =ColorFade(BackGround.Fill, -20%)
+        Transparency: =0.1
+        Width: =640
+        ZIndex: =1
+
+    BackgroundDim As rectangle:
+        BorderColor: =RGBA(255, 102, 102, 1)
+        DisabledFill: =BackgroundDim.Fill
+        Fill: =RGBA(0, 0, 0, 0.8)
+        FocusedBorderColor: =BackgroundDim.BorderColor
+        Height: =1136
+        HoverFill: =BackgroundDim.Fill
+        PressedFill: =BackgroundDim.Fill
+        Width: =640
+        ZIndex: =2
+
+    LoginAsAdmin As button:
+        BorderColor: =ColorFade(LoginAsAdmin.Fill, -15%)
+        Color: =RGBA(255,255,255,1)
+        DisabledBorderColor: =ColorFade(LoginAsAdmin.BorderColor, 70%)
+        DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+        DisabledFill: =ColorFade(RGBA(159, 167, 165, 1), 50%)
+        Fill: =RGBA(224, 69, 74, 1)
+        FocusedBorderColor: =LoginAsAdmin.BorderColor
+        Height: =89
+        HoverBorderColor: |-
+            =ColorValue("#e0454a")
+        HoverColor: =LoginAsAdmin.Color
+        HoverFill: =ColorFade(LoginAsAdmin.Fill, 20%)
+        OnSelect: |-
+            =
+            Navigate(MyTicketsScreen,BorderStyle.None)
+        PressedBorderColor: =LoginAsAdmin.Fill
+        PressedColor: =LoginAsAdmin.Fill
+        PressedFill: =LoginAsAdmin.Color
+        RadiusBottomLeft: =44.5
+        RadiusBottomRight: =44.5
+        RadiusTopLeft: =44.5
+        RadiusTopRight: =44.5
+        Size: =18
+        Text: |-
+            ="Login as a Client
+            "
+        Width: =485
+        X: =77
+        Y: =684
+        ZIndex: =4
+
+    SubmitTicketLabel As label:
+        BorderColor: =RGBA(255, 102, 102, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+        FocusedBorderColor: =SubmitTicketLabel.BorderColor
+        Height: =19
+        HoverBorderColor: =SubmitTicketLabel.BorderColor
+        HoverColor: =SubmitTicketLabel.Color
+        HoverFill: =SubmitTicketLabel.Fill
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        PressedBorderColor: =SubmitTicketLabel.BorderColor
+        PressedColor: =SubmitTicketLabel.Color
+        PressedFill: =SubmitTicketLabel.Fill
+        Size: =18
+        Text: ="TO SUBMIT A HELP DESK TICKET"
+        Width: =360
+        X: =153
+        Y: =615
+        ZIndex: =5
+

@@ -1,0 +1,112 @@
+"'Collection and Variables' As screen":
+    Fill: =RGBA(255,255,255,1)
+    Height: =Max(App.Height, App.DesignHeight)
+    Width: =Max(App.Width, App.DesignWidth)
+
+    CollectionAndVariablesTitle As label:
+        Align: =Align.Center
+        BorderColor: =RGBA(255, 102, 102, 1)
+        Color: =RGBA(47,41,43,1)
+        DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+        FocusedBorderColor: =CollectionAndVariablesTitle.BorderColor
+        FontWeight: =FontWeight.Semibold
+        Height: =37
+        HoverBorderColor: =CollectionAndVariablesTitle.BorderColor
+        HoverColor: =CollectionAndVariablesTitle.Color
+        HoverFill: =CollectionAndVariablesTitle.Fill
+        PaddingBottom: =0
+        PaddingLeft: =0
+        PaddingRight: =0
+        PaddingTop: =0
+        PressedBorderColor: =CollectionAndVariablesTitle.BorderColor
+        PressedColor: =CollectionAndVariablesTitle.Color
+        PressedFill: =CollectionAndVariablesTitle.Fill
+        Size: =16
+        Text: ="Collections & Variables"
+        Width: =640
+        ZIndex: =1
+
+    CollectionAndVariablesCollectionTitle As label:
+        Align: =LayoutAlignItems.Center
+        BorderColor: =RGBA(255, 102, 102, 1)
+        Color: =RGBA(47,41,43,1)
+        DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+        Fill: =RGBA(238, 238, 238, 1)
+        FocusedBorderColor: =CollectionAndVariablesCollectionTitle.BorderColor
+        FontWeight: =FontWeight.Semibold
+        Height: =30
+        HoverBorderColor: =CollectionAndVariablesCollectionTitle.BorderColor
+        HoverColor: =CollectionAndVariablesCollectionTitle.Color
+        HoverFill: =CollectionAndVariablesCollectionTitle.Fill
+        PressedBorderColor: =CollectionAndVariablesCollectionTitle.BorderColor
+        PressedColor: =CollectionAndVariablesCollectionTitle.Color
+        PressedFill: =CollectionAndVariablesCollectionTitle.Fill
+        Size: =12
+        Text: ="Collections"
+        Width: =640
+        Y: =40
+        ZIndex: =2
+
+    CollectionAndVariablesCollectionsContent As htmlViewer:
+        Height: =166
+        HoverBorderColor: =CollectionAndVariablesCollectionsContent.BorderColor
+        HtmlText: |-
+            ="<p><strong>TaskStatus - </strong>List of status for a ticket and used to edit a ticket</p>" &
+            "<p><strong>TaskCategories - </strong>List of categories for a ticket and used to create/edit a ticket</p>"  &
+            "<p><strong>TaskPriority - </strong>List of priorities and used to edit a ticket</p>" &
+            "<p><strong>AllTickets - </strong>List of all tickets and used to display on my tickets screen</p>" 
+        PaddingBottom: =0
+        PaddingLeft: =20
+        PaddingRight: =0
+        PaddingTop: =0
+        PressedBorderColor: =CollectionAndVariablesCollectionsContent.BorderColor
+        Width: =640
+        Y: =71
+        ZIndex: =3
+
+    CollectionAndVariablesVariablesTitle As label:
+        Align: =LayoutAlignItems.Center
+        BorderColor: =RGBA(255, 102, 102, 1)
+        Color: =RGBA(47,41,43,1)
+        DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+        Fill: =RGBA(238, 238, 238, 1)
+        FocusedBorderColor: =CollectionAndVariablesVariablesTitle.BorderColor
+        FontWeight: =FontWeight.Semibold
+        Height: =30
+        HoverBorderColor: =CollectionAndVariablesVariablesTitle.BorderColor
+        HoverColor: =CollectionAndVariablesVariablesTitle.Color
+        HoverFill: =CollectionAndVariablesVariablesTitle.Fill
+        PressedBorderColor: =CollectionAndVariablesVariablesTitle.BorderColor
+        PressedColor: =CollectionAndVariablesVariablesTitle.Color
+        PressedFill: =CollectionAndVariablesVariablesTitle.Fill
+        Size: =12
+        Text: ="Variables"
+        Width: =640
+        Y: =237
+        ZIndex: =4
+
+    CollectionAndVariablesVariablesContent As htmlViewer:
+        Height: =856
+        HoverBorderColor: =CollectionAndVariablesVariablesContent.BorderColor
+        HtmlText: |-
+            ="<p><strong>NewTicketCategory - </strong>Default category when create a new ticket</p>" &
+            "<p><strong>MyProfile - </strong>Current user Office 365 user profile metadata</p>" &
+            "<p><strong>ShowAccessError - </strong>Show admin login succeed or failed message</p>" &
+            "<p><strong>isAdmin - </strong>Used to identify if current user is admin</p>"  &
+            "<p><strong>SelectedTicket - </strong>Tracks ticket selected int the application</p>" &
+            "<p><strong>TicketToDelete - </strong>Tracks ticket that will be deleted</p>" &
+            "<p><strong>NewTicketID - </strong>Generate a new Id when create a new ticket</p>" &
+            "<p><strong>isBlackWhite- </strong>Check if black color or colorful for status drop-down on edit ticket screen</p>" &
+            "<p><strong>AssignedToUserDisplayName - </strong>Display name of assigned to user and used on the edit ticket screen</p>" &
+            "<p><strong>AssignedToUsermail - </strong>Email of assigned to user and used on the edit ticket screen</p>" &
+            "<p><strong>EditTicketPriority - </strong>Ticket priority on the edit ticket screen</p>" &
+            "<p><strong>ShowAssignedToGallery - </strong>Controls visibility of assigned to gallery on the edit ticket screen</p>" 
+        PaddingBottom: =0
+        PaddingLeft: =20
+        PaddingRight: =0
+        PaddingTop: =0
+        PressedBorderColor: =CollectionAndVariablesVariablesContent.BorderColor
+        Width: =640
+        Y: =267
+        ZIndex: =5
+

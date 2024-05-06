@@ -1,0 +1,19 @@
+App As appinfo:
+    BackEnabled: =true
+    MinScreenHeight: =320
+    MinScreenWidth: =320
+    OnStart: |-
+        =ClearCollect(TaskCategories,[{ Id: 1, Name: "Tech" }, { Id: 2, Name: "Fincance" }]);
+        ClearCollect(TaskStatus,"NOT STARTED","IN PROGRESS","COMPLETED");
+        ClearCollect(TaskPriority,"HIGH","MEDIUM","LOW");
+        Set(MyProfile,Office365Users.MyProfile());
+        ClearCollect(AdminList,"jaider.osorio@pragma.com.co");
+    Theme: =PowerAppsTheme
+
+    Host As hostControl.DefaultHostControlVariant:
+        OnCancel: =false
+        OnEdit: =false
+        OnNew: =false
+        OnSave: =false
+        OnView: =false
+

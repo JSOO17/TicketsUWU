@@ -1,0 +1,75 @@
+PreviewFile As screen:
+    Fill: =RGBA(255,255,255,1)
+    LoadingSpinnerColor: =RGBA(211, 66, 9, 1)
+
+    ViewTicketScreenTitleHeader_1 As group:
+        Height: =5
+        Width: =5
+        X: =40
+        Y: =40
+        ZIndex: =3
+
+        ViewTicketScreenTitleBackground_1 As rectangle:
+            BorderColor: =RGBA(255, 102, 102, 1)
+            DisabledFill: =ViewTicketScreenTitleBackground_1.Fill
+            Fill: =RGBA(158, 11, 15, 1)
+            FocusedBorderColor: =ViewTicketScreenTitleBackground_1.BorderColor
+            Height: =97
+            HoverFill: =ViewTicketScreenTitleBackground_1.Fill
+            PressedFill: =ViewTicketScreenTitleBackground_1.Fill
+            Width: =640
+            ZIndex: =1
+
+        ViewTicketScreenTitle_1 As label:
+            BorderColor: =RGBA(255, 102, 102, 1)
+            Color: =RGBA(221, 221, 221, 1)
+            DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+            FocusedBorderColor: =ViewTicketScreenTitle_1.BorderColor
+            Height: =31
+            HoverBorderColor: =ViewTicketScreenTitle_1.BorderColor
+            HoverColor: =ViewTicketScreenTitle_1.Color
+            HoverFill: =ViewTicketScreenTitle_1.Fill
+            PaddingBottom: =0
+            PaddingLeft: =0
+            PaddingRight: =0
+            PaddingTop: =0
+            PressedBorderColor: =ViewTicketScreenTitle_1.BorderColor
+            PressedColor: =ViewTicketScreenTitle_1.Color
+            PressedFill: =ViewTicketScreenTitle_1.Fill
+            Size: =27
+            Text: ="View Ticket"
+            Width: =187
+            X: =226
+            Y: =30
+            ZIndex: =2
+
+    ViewTicketScreenBack_1 As icon.ChevronLeft:
+        BorderColor: =RGBA(255, 102, 102, 1)
+        Color: =RGBA(255, 255, 255, 1)
+        DisabledBorderColor: =RGBA(159, 167, 165, 1)
+        DisabledColor: =RGBA(193, 193, 193, 0.95)
+        DisabledFill: =ViewTicketScreenBack_1.Fill
+        FocusedBorderColor: =ViewTicketScreenBack_1.BorderColor
+        FocusedBorderThickness: =0
+        Height: =45
+        HoverBorderColor: =ColorFade(ViewTicketScreenBack_1.BorderColor, 20%)
+        HoverColor: =ColorFade(ViewTicketScreenBack_1.Color, 20%)
+        HoverFill: =ViewTicketScreenBack_1.Fill
+        Icon: =Icon.ChevronLeft
+        OnSelect: =Back()
+        PressedBorderColor: =ColorFade(ViewTicketScreenBack_1.BorderColor, -20%)
+        PressedColor: =ColorFade(ViewTicketScreenBack_1.Color, -20%)
+        PressedFill: =ViewTicketScreenBack_1.Fill
+        Width: =45
+        X: =7
+        Y: =26
+        ZIndex: =4
+
+    PdfViewer7 As pdfViewer:
+        Document: =AzureBlobStorage.GetFileContent(GalleryFiles.Selected.Id)
+        Height: =978
+        Width: =560
+        X: =33
+        Y: =129
+        ZIndex: =5
+

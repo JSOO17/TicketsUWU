@@ -1,0 +1,651 @@
+EditTicketScreen As screen:
+    BackgroundImage: =
+    Fill: =RGBA(250,250,250,1)
+    Height: =Max(App.Height, App.DesignHeight)
+    ImagePosition: =ImagePosition.Fill
+    OnVisible: |-
+        =UpdateContext({ShowAssignedToGallery:false, AssignedToUserDisplayName: MyTicketsScreenGallery.Selected.AssignedTo})
+    Width: =Max(App.Width, App.DesignWidth)
+
+    EditTicketScreenCanvas As fluidGrid.fluidGridWithBlankCard:
+        BorderThickness: =0
+        Height: =Parent.Height - EditTicketScreenCanvas.Y
+        Width: =Parent.Width
+        ZIndex: =25
+
+        EditTicketScreenDataCard As dataCard:
+            BorderColor: =RGBA(0, 0, 0, 1)
+            BorderStyle: =BorderStyle.Solid
+            BorderThickness: =0
+            DisplayMode: =DisplayMode.Edit
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =1681
+            Width: =Parent.Width
+            WidthFit: =true
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            EditTicketScreenHeaderGroup As group:
+                Height: =5
+                Width: =5
+                X: =40
+                Y: =40
+                ZIndex: =16
+
+                EditTicketScreenTitleBackground As rectangle:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    DisabledFill: =EditTicketScreenTitleBackground.Fill
+                    Fill: =RGBA(158, 11, 15, 1)
+                    FocusedBorderColor: =EditTicketScreenTitleBackground.BorderColor
+                    Height: =97
+                    HoverFill: =EditTicketScreenTitleBackground.Fill
+                    PressedFill: =EditTicketScreenTitleBackground.Fill
+                    Width: =640
+                    ZIndex: =1
+
+                EditTicketScreenTitle As label:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    Color: =RGBA(221, 221, 221, 1)
+                    DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                    FocusedBorderColor: =EditTicketScreenTitle.BorderColor
+                    Height: =29
+                    HoverBorderColor: =EditTicketScreenTitle.BorderColor
+                    HoverColor: =EditTicketScreenTitle.Color
+                    HoverFill: =EditTicketScreenTitle.Fill
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: =EditTicketScreenTitle.BorderColor
+                    PressedColor: =EditTicketScreenTitle.Color
+                    PressedFill: =EditTicketScreenTitle.Fill
+                    Size: =27
+                    Text: ="Edit Ticket"
+                    Width: =220
+                    X: =226
+                    Y: =30
+                    ZIndex: =2
+
+                EditTicketScreenBack As icon.ChevronLeft:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledBorderColor: =RGBA(159, 167, 165, 1)
+                    DisabledColor: =RGBA(193, 193, 193, 0.95)
+                    DisabledFill: =EditTicketScreenBack.Fill
+                    FocusedBorderColor: =EditTicketScreenBack.BorderColor
+                    FocusedBorderThickness: =0
+                    Height: =74
+                    HoverBorderColor: =ColorFade(EditTicketScreenBack.BorderColor, 20%)
+                    HoverColor: =ColorFade(EditTicketScreenBack.Color, 20%)
+                    HoverFill: =EditTicketScreenBack.Fill
+                    Icon: =Icon.ChevronLeft
+                    OnSelect: |-
+                        =Reset(EditTicketScreenDescriptionInput);
+                        Reset(EditFiles);
+                        Clear(FilesToEdit);
+                        Navigate(MyTicketsScreen,BorderStyle.None)
+                    PressedBorderColor: =ColorFade(EditTicketScreenBack.BorderColor, -20%)
+                    PressedColor: =ColorFade(EditTicketScreenBack.Color, -20%)
+                    PressedFill: =EditTicketScreenBack.Fill
+                    Width: =45
+                    X: =7
+                    Y: =10
+                    ZIndex: =3
+
+            EditTicketScreenAssignedToLabel As label:
+                BorderColor: =RGBA(255, 102, 102, 1)
+                Color: =RGBA(74, 74, 74, 1)
+                DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                DisplayMode: =DisplayMode.Disabled
+                FocusedBorderColor: =EditTicketScreenAssignedToLabel.BorderColor
+                Height: =18
+                HoverBorderColor: =EditTicketScreenAssignedToLabel.BorderColor
+                HoverColor: =EditTicketScreenAssignedToLabel.Color
+                HoverFill: =EditTicketScreenAssignedToLabel.Fill
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedBorderColor: =EditTicketScreenAssignedToLabel.BorderColor
+                PressedColor: =EditTicketScreenAssignedToLabel.Color
+                PressedFill: =EditTicketScreenAssignedToLabel.Fill
+                Size: =13.5
+                Text: ="ASSIGNED TO"
+                Width: =125
+                X: =23
+                Y: =405
+                ZIndex: =26
+
+            EditTicketScreenTicketInfomationGroup As group:
+                Height: =5
+                Width: =5
+                X: =40
+                Y: =40
+                ZIndex: =26
+
+                EditTicketScreenHeaderBackground As button:
+                    BorderColor: =ColorFade(EditTicketScreenHeaderBackground.Fill, -15%)
+                    BorderThickness: =0
+                    Color: =RGBA(255,255,255,1)
+                    DisabledBorderColor: =ColorFade(EditTicketScreenHeaderBackground.BorderColor, 70%)
+                    DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                    DisabledFill: =ColorFade(RGBA(159, 167, 165, 1), 50%)
+                    DisplayMode: =DisplayMode.View
+                    Fill: =RGBA(54, 54, 54, 1)
+                    FocusedBorderColor: =EditTicketScreenHeaderBackground.BorderColor
+                    FocusedBorderThickness: =0
+                    FontWeight: =FontWeight.Semibold
+                    Height: =271
+                    HoverBorderColor: |-
+                        =ColorValue("#363636")
+                    HoverColor: =EditTicketScreenHeaderBackground.Color
+                    HoverFill: =ColorFade(EditTicketScreenHeaderBackground.Fill, 20%)
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: |-
+                        =ColorValue("#363636")
+                    PressedColor: =EditTicketScreenHeaderBackground.Fill
+                    PressedFill: =EditTicketScreenHeaderBackground.Color
+                    RadiusBottomLeft: =5
+                    RadiusBottomRight: =5
+                    RadiusTopLeft: =5
+                    RadiusTopRight: =5
+                    Size: =24
+                    Text: =""
+                    Width: =602
+                    X: =15
+                    Y: =112
+                    ZIndex: =6
+
+                EditTicketScreenHeaderIcon As image:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    DisabledBorderColor: =RGBA(159, 167, 165, 1)
+                    DisabledFill: =RGBA(193, 193, 193, 0.95)
+                    FocusedBorderColor: =EditTicketScreenHeaderIcon.BorderColor
+                    FocusedBorderThickness: =0
+                    Height: =31
+                    HoverBorderColor: =ColorFade(EditTicketScreenHeaderIcon.BorderColor, 20%)
+                    HoverFill: =ColorFade(EditTicketScreenHeaderIcon.Fill, 20%)
+                    Image: ='icons-8-train-ticket-96-px'
+                    PressedBorderColor: =ColorFade(EditTicketScreenHeaderIcon.BorderColor, -20%)
+                    PressedFill: =ColorFade(EditTicketScreenHeaderIcon.Fill, -20%)
+                    Width: =50
+                    X: =44
+                    Y: =135
+                    ZIndex: =7
+
+                EditTicketScreenHeaderIDLabel As label:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                    FocusedBorderColor: =EditTicketScreenHeaderIDLabel.BorderColor
+                    Height: =17
+                    HoverBorderColor: =EditTicketScreenHeaderIDLabel.BorderColor
+                    HoverColor: =EditTicketScreenHeaderIDLabel.Color
+                    HoverFill: =EditTicketScreenHeaderIDLabel.Fill
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: =EditTicketScreenHeaderIDLabel.BorderColor
+                    PressedColor: =EditTicketScreenHeaderIDLabel.Color
+                    PressedFill: =EditTicketScreenHeaderIDLabel.Fill
+                    Size: =13
+                    Text: |-
+                        ="ID:"
+                    Width: =25
+                    X: =110
+                    Y: =144
+                    ZIndex: =8
+
+                EditTicketScreenHeaderTickerNumber As label:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                    FocusedBorderColor: =EditTicketScreenHeaderTickerNumber.BorderColor
+                    FontWeight: =FontWeight.Semibold
+                    Height: =17
+                    HoverBorderColor: =EditTicketScreenHeaderTickerNumber.BorderColor
+                    HoverColor: =EditTicketScreenHeaderTickerNumber.Color
+                    HoverFill: =EditTicketScreenHeaderTickerNumber.Fill
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: =EditTicketScreenHeaderTickerNumber.BorderColor
+                    PressedColor: =EditTicketScreenHeaderTickerNumber.Color
+                    PressedFill: =EditTicketScreenHeaderTickerNumber.Fill
+                    Size: =18
+                    Text: =SelectedTicket.Id
+                    Width: =31
+                    X: =141
+                    Y: =142
+                    ZIndex: =9
+
+                EditTicketScreenHeaderTitle As label:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                    FocusedBorderColor: =EditTicketScreenHeaderTitle.BorderColor
+                    Height: =66
+                    HoverBorderColor: =EditTicketScreenHeaderTitle.BorderColor
+                    HoverColor: =EditTicketScreenHeaderTitle.Color
+                    HoverFill: =EditTicketScreenHeaderTitle.Fill
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: =EditTicketScreenHeaderTitle.BorderColor
+                    PressedColor: =EditTicketScreenHeaderTitle.Color
+                    PressedFill: =EditTicketScreenHeaderTitle.Fill
+                    Size: =22
+                    Text: =SelectedTicket.Title
+                    VerticalAlign: =VerticalAlign.Top
+                    Width: =524
+                    X: =44
+                    Y: =189
+                    ZIndex: =10
+
+                EditTicketScreenHeaderCreatedTitle As label:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                    FocusedBorderColor: =EditTicketScreenHeaderCreatedTitle.BorderColor
+                    Height: =15
+                    HoverBorderColor: =EditTicketScreenHeaderCreatedTitle.BorderColor
+                    HoverColor: =EditTicketScreenHeaderCreatedTitle.Color
+                    HoverFill: =EditTicketScreenHeaderCreatedTitle.Fill
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: =EditTicketScreenHeaderCreatedTitle.BorderColor
+                    PressedColor: =EditTicketScreenHeaderCreatedTitle.Color
+                    PressedFill: =EditTicketScreenHeaderCreatedTitle.Fill
+                    Size: =13
+                    Text: |-
+                        ="CREATED:"
+                    Width: =87
+                    X: =43
+                    Y: =295
+                    ZIndex: =11
+
+                EditTicketScreenHeaderCreatedByTitle As label:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                    FocusedBorderColor: =EditTicketScreenHeaderCreatedByTitle.BorderColor
+                    Height: =13
+                    HoverBorderColor: =EditTicketScreenHeaderCreatedByTitle.BorderColor
+                    HoverColor: =EditTicketScreenHeaderCreatedByTitle.Color
+                    HoverFill: =EditTicketScreenHeaderCreatedByTitle.Fill
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: =EditTicketScreenHeaderCreatedByTitle.BorderColor
+                    PressedColor: =EditTicketScreenHeaderCreatedByTitle.Color
+                    PressedFill: =EditTicketScreenHeaderCreatedByTitle.Fill
+                    Size: =13
+                    Text: |-
+                        ="CREATED BY:"
+                    Width: =112
+                    X: =43
+                    Y: =322
+                    ZIndex: =12
+
+                EditTicketScreenHeaderTickerCreated As label:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                    FocusedBorderColor: =EditTicketScreenHeaderTickerCreated.BorderColor
+                    FontWeight: =FontWeight.Semibold
+                    Height: =18
+                    HoverBorderColor: =EditTicketScreenHeaderTickerCreated.BorderColor
+                    HoverColor: =EditTicketScreenHeaderTickerCreated.Color
+                    HoverFill: =EditTicketScreenHeaderTickerCreated.Fill
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: =EditTicketScreenHeaderTickerCreated.BorderColor
+                    PressedColor: =EditTicketScreenHeaderTickerCreated.Color
+                    PressedFill: =EditTicketScreenHeaderTickerCreated.Fill
+                    Size: =18
+                    Text: =Text(SelectedTicket.DateCreation,DateTimeFormat.ShortDate)
+                    Width: =400
+                    X: =131
+                    Y: =291
+                    ZIndex: =15
+
+                EditTicketScreenHeaderTickerCreatedBy As label:
+                    BorderColor: =RGBA(255, 102, 102, 1)
+                    Color: =RGBA(255, 255, 255, 1)
+                    DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                    FocusedBorderColor: =EditTicketScreenHeaderTickerCreatedBy.BorderColor
+                    FontWeight: =FontWeight.Semibold
+                    Height: =23
+                    HoverBorderColor: =EditTicketScreenHeaderTickerCreatedBy.BorderColor
+                    HoverColor: =EditTicketScreenHeaderTickerCreatedBy.Color
+                    HoverFill: =EditTicketScreenHeaderTickerCreatedBy.Fill
+                    PaddingBottom: =0
+                    PaddingLeft: =0
+                    PaddingRight: =0
+                    PaddingTop: =0
+                    PressedBorderColor: =EditTicketScreenHeaderTickerCreatedBy.BorderColor
+                    PressedColor: =EditTicketScreenHeaderTickerCreatedBy.Color
+                    PressedFill: =EditTicketScreenHeaderTickerCreatedBy.Fill
+                    Size: =18
+                    Text: |-
+                        =Coalesce(First(Office365Users.SearchUser({searchTerm:Text(SelectedTicket.CreationUser)})).DisplayName, SelectedTicket.CreationUser)
+                    VerticalAlign: =VerticalAlign.Bottom
+                    Width: =400
+                    Wrap: =false
+                    X: =155
+                    Y: =317
+                    ZIndex: =16
+
+            EditTicketScreenAssignedToStar As label:
+                BorderColor: =RGBA(255, 102, 102, 1)
+                Color: =RGBA(158, 11, 15, 1)
+                DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                FocusedBorderColor: =EditTicketScreenAssignedToStar.BorderColor
+                Height: =18
+                HoverBorderColor: =EditTicketScreenAssignedToStar.BorderColor
+                HoverColor: =EditTicketScreenAssignedToStar.Color
+                HoverFill: =EditTicketScreenAssignedToStar.Fill
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedBorderColor: =EditTicketScreenAssignedToStar.BorderColor
+                PressedColor: =EditTicketScreenAssignedToStar.Color
+                PressedFill: =EditTicketScreenAssignedToStar.Fill
+                Size: =13.5
+                Text: ="*"
+                Width: =12
+                X: =137
+                Y: =405
+                ZIndex: =27
+
+            EditTicketScreenDescriptionLabel As label:
+                BorderColor: =RGBA(255, 102, 102, 1)
+                Color: =RGBA(74, 74, 74, 1)
+                DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                FocusedBorderColor: =EditTicketScreenDescriptionLabel.BorderColor
+                Height: =18
+                HoverBorderColor: =EditTicketScreenDescriptionLabel.BorderColor
+                HoverColor: =EditTicketScreenDescriptionLabel.Color
+                HoverFill: =EditTicketScreenDescriptionLabel.Fill
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedBorderColor: =EditTicketScreenDescriptionLabel.BorderColor
+                PressedColor: =EditTicketScreenDescriptionLabel.Color
+                PressedFill: =EditTicketScreenDescriptionLabel.Fill
+                Size: =13.5
+                Text: ="DESCRIPTION"
+                Width: =122
+                X: =25
+                Y: =535
+                ZIndex: =29
+
+            EditTicketScreenDescriptionStar As label:
+                BorderColor: =RGBA(255, 102, 102, 1)
+                Color: =RGBA(158, 11, 15, 1)
+                DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                FocusedBorderColor: =EditTicketScreenDescriptionStar.BorderColor
+                Height: =18
+                HoverBorderColor: =EditTicketScreenDescriptionStar.BorderColor
+                HoverColor: =EditTicketScreenDescriptionStar.Color
+                HoverFill: =EditTicketScreenDescriptionStar.Fill
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedBorderColor: =EditTicketScreenDescriptionStar.BorderColor
+                PressedColor: =EditTicketScreenDescriptionStar.Color
+                PressedFill: =EditTicketScreenDescriptionStar.Fill
+                Size: =13.5
+                Text: ="*"
+                Width: =12
+                X: =140
+                Y: =535
+                ZIndex: =30
+
+            EditTicketScreenDescriptionInput As text:
+                BorderColor: =RGBA(235, 235, 235, 1)
+                Color: =RGBA(47, 41, 43, 1)
+                Default: = PlainText(SelectedTicket.Description)
+                DisabledBorderColor: =RGBA(159, 167, 165, 1)
+                DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                DisabledFill: =ColorFade(RGBA(159, 167, 165, 1), 50%)
+                FocusedBorderColor: =EditTicketScreenDescriptionInput.BorderColor
+                FocusedBorderThickness: =1
+                Height: =205
+                HoverBorderColor: =RGBA(255, 102, 102, 1)
+                HoverColor: =RGBA(47, 41, 43, 1)
+                HoverFill: =RGBA(255, 255, 255, 1)
+                Mode: =TextMode.MultiLine
+                PressedBorderColor: =EditTicketScreenDescriptionInput.HoverBorderColor
+                PressedColor: =EditTicketScreenDescriptionInput.Color
+                PressedFill: =EditTicketScreenDescriptionInput.Fill
+                Size: =18
+                Width: =592
+                X: =25
+                Y: =569
+                ZIndex: =31
+
+            EditTicketScreenCancelButton As button:
+                BorderColor: =RGBA(158, 11, 15, 1)
+                Color: =RGBA(158, 11, 15, 1)
+                DisabledBorderColor: =ColorFade(EditTicketScreenCancelButton.BorderColor, 70%)
+                DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                DisabledFill: =ColorFade(RGBA(159, 167, 165, 1), 50%)
+                Fill: =RGBA(255, 255, 255, 1)
+                FocusedBorderColor: =EditTicketScreenCancelButton.BorderColor
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                HoverBorderColor: =ColorFade(EditTicketScreenCancelButton.BorderColor, 20%)
+                HoverColor: =EditTicketScreenCancelButton.Color
+                HoverFill: =ColorFade(EditTicketScreenCancelButton.Fill, 20%)
+                OnSelect: |-
+                    =Reset(EditTicketScreenDescriptionInput);
+                    Reset(EditFiles);
+                    Clear(FilesToEdit);
+                    Navigate(MyTicketsScreen,BorderStyle.None)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedBorderColor: =EditTicketScreenCancelButton.Fill
+                PressedColor: =EditTicketScreenCancelButton.Fill
+                PressedFill: =EditTicketScreenCancelButton.Color
+                RadiusBottomLeft: =20
+                RadiusBottomRight: =20
+                RadiusTopLeft: =20
+                RadiusTopRight: =20
+                Size: =13.5
+                Text: ="Cancel"
+                Width: =130
+                X: =166
+                Y: =1545
+                ZIndex: =38
+
+            EditTicketScreenUpdateButton As button:
+                BorderColor: =RGBA(158, 11, 15, 1)
+                DisabledBorderColor: =ColorFade(EditTicketScreenUpdateButton.BorderColor, 70%)
+                DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                DisabledFill: =ColorFade(RGBA(159, 167, 165, 1), 50%)
+                DisplayMode: =If(!IsBlank(EditTicketScreenDescriptionInput.Text), DisplayMode.Edit, DisplayMode.Disabled)
+                Fill: =RGBA(158, 11, 15, 1)
+                FocusedBorderColor: =EditTicketScreenUpdateButton.BorderColor
+                FontWeight: =FontWeight.Semibold
+                Height: =54
+                HoverBorderColor: =ColorFade(EditTicketScreenUpdateButton.BorderColor, 20%)
+                HoverColor: =EditTicketScreenUpdateButton.Color
+                HoverFill: =ColorFade(EditTicketScreenUpdateButton.Fill, 20%)
+                OnSelect: |-
+                    =Patch(
+                        Ticket,
+                        LookUp(
+                            Ticket,
+                            Id = SelectedTicket.Id
+                        ),
+                        {Description: EditTicketScreenDescriptionInput.Text}
+                    );
+                    ForAll(
+                        EditFiles.Attachments,
+                        AzureBlobStorage.CreateFile(
+                            "shops/" & Text(SelectedTicket.Id) & "/",
+                            ThisRecord.Name,
+                            ThisRecord.Value
+                        );
+                        UploadFile.Run(
+                            {
+                                contentBytes: ThisRecord.Value,
+                                name: ThisRecord.Name
+                            },
+                            Text(SelectedTicket.DevopsId)
+                        )
+                    );
+                    Clear(FilesToEdit);
+                    Reset(EditFiles);
+                    Navigate(
+                        MyTicketsScreen,
+                        BorderStyle.None
+                    )
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedBorderColor: =EditTicketScreenUpdateButton.Fill
+                PressedColor: =EditTicketScreenUpdateButton.Fill
+                PressedFill: =EditTicketScreenUpdateButton.Color
+                RadiusBottomLeft: =20
+                RadiusBottomRight: =20
+                RadiusTopLeft: =20
+                RadiusTopRight: =20
+                Size: =13.5
+                Text: ="Update"
+                Width: =130
+                X: =336
+                Y: =1545
+                ZIndex: =39
+
+            EditTicketScreenAssignedToDisplayLabel As label:
+                BorderColor: =RGBA(235, 235, 235, 1)
+                BorderThickness: =1
+                Color: =RGBA(47,41,43,1)
+                DisabledBorderColor: =RGBA(179, 179, 179, 1)
+                DisabledColor: =ColorFade(RGBA(47, 41, 43, 1), 70%)
+                DisplayMode: =DisplayMode.Disabled
+                Fill: =RGBA(255, 255, 255, 1)
+                FocusedBorderColor: =EditTicketScreenAssignedToDisplayLabel.BorderColor
+                FocusedBorderThickness: =1
+                Height: =60
+                HoverBorderColor: =EditTicketScreenAssignedToDisplayLabel.BorderColor
+                HoverColor: =EditTicketScreenAssignedToDisplayLabel.Color
+                HoverFill: =EditTicketScreenAssignedToDisplayLabel.Fill
+                OnSelect: |-
+                    =UpdateContext({ShowAssignedToGallery:true})
+                PaddingBottom: =0
+                PaddingLeft: =20
+                PaddingRight: =0
+                PaddingTop: =0
+                PressedBorderColor: =EditTicketScreenAssignedToDisplayLabel.BorderColor
+                PressedColor: =EditTicketScreenAssignedToDisplayLabel.Color
+                PressedFill: =EditTicketScreenAssignedToDisplayLabel.Fill
+                Size: =18
+                Text: =SelectedTicket.AssignedTo
+                Visible: =!ShowAssignedToGallery
+                Width: =592
+                X: =24
+                Y: =440
+                ZIndex: =44
+
+            EditFiles As attachments:
+                BorderColor: =
+                BorderThickness: =2
+                DisabledBorderColor: =RGBA(166, 166, 166, 1)
+                DisabledColor: =RGBA(166, 166, 166, 1)
+                DisabledFill: =RGBA(244, 244, 244, 1)
+                DisplayMode: =Parent.DisplayMode
+                FocusedBorderThickness: =4
+                Height: =307
+                HoverColor: =RGBA(0, 0, 0, 1)
+                HoverFill: =RGBA(255, 211, 205, 1)
+                IsInDataCard: =true
+                ItemColor: =RGBA(255, 255, 255, 1)
+                ItemFill: =RGBA(211, 66, 9, 1)
+                ItemHoverColor: =RGBA(0, 0, 0, 1)
+                ItemHoverFill: =RGBA(255, 211, 205, 1)
+                Items: =AttachmentsTickets
+                PaddingBottom: =5
+                PaddingLeft: =If(Self.DisplayMode = DisplayMode.Edit, 5, 0)
+                PaddingRight: =5
+                PaddingTop: =5
+                PressedColor: =RGBA(255, 255, 255, 1)
+                PressedFill: =RGBA(131, 24, 75, 1)
+                Size: =21
+                Width: =593
+                X: =25
+                Y: =857
+                ZIndex: =45
+
+            "GalleryFiles_1 As gallery.'BrowseLayout_Vertical_TwoTextOneImageVariant_ver5.0'":
+                BorderColor: =RGBA(131, 24, 75, 1)
+                DelayItemLoading: =true
+                Height: =307
+                Items: =FilesToEdit
+                Layout: =Layout.Vertical
+                LoadingSpinner: =LoadingSpinner.Data
+                TemplatePadding: =0
+                TemplateSize: =110
+                Y: =1202
+                ZIndex: =46
+
+                NextArrow1_1 As icon.ChevronRight:
+                    AccessibleLabel: =Self.Tooltip
+                    Color: =RGBA(166, 166, 166, 1)
+                    Height: =50
+                    Icon: =Icon.ChevronRight
+                    OnSelect: |-
+                        =Select(Parent);
+                        Navigate(PreviewFile)
+                    PaddingBottom: =16
+                    PaddingLeft: =16
+                    PaddingRight: =16
+                    PaddingTop: =16
+                    Tooltip: ="Ver los detalles del elemento"
+                    Width: =50
+                    X: =Parent.TemplateWidth - Self.Width - 12
+                    Y: =(Parent.TemplateHeight / 2) - (Self.Height / 2)
+                    ZIndex: =4
+
+                Separator1_1 As rectangle:
+                    BorderColor: =RGBA(131, 24, 75, 1)
+                    Fill: =RGBA(255, 255, 255, 1)
+                    Height: =8
+                    OnSelect: =Select(Parent)
+                    Width: =Parent.TemplateWidth
+                    Y: =Parent.TemplateHeight - Self.Height
+                    ZIndex: =5
+
+                Label4_1 As label:
+                    BorderColor: =RGBA(131, 24, 75, 1)
+                    Color: =RGBA(0, 0, 0, 1)
+                    DisabledColor: =RGBA(166, 166, 166, 1)
+                    Height: =71
+                    OnSelect: =Select(Parent)
+                    Size: =16
+                    Text: =ThisItem.DisplayName
+                    Width: =485
+                    X: =18
+                    Y: =18
+                    ZIndex: =7
+
