@@ -149,6 +149,14 @@
       "apiTier": "Premium",
       "authenticationType": "sqlAuthentication",
       "displayName": "SQL Server",
+      "executionRestrictions": {
+        "apiId": "/providers/microsoft.powerapps/apis/shared_sql",
+        "apiVer": 1,
+        "appVer": "3.24045.17",
+        "modifiedOn": "2024-05-06 22:38:40",
+        "policy": "{\"type\":\"tabular\",\"dataSources\":{\"[dbo].[ticket]\":[\"post\",\"patch\",\"get\",\"delete\"],\"[dbo].[category]\":[\"get\"]}}",
+        "version": 1
+      },
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1683/1.0.1683.3685/sql/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_sql",
       "parameterHints": {},
@@ -318,6 +326,13 @@
       "apiTier": "Premium",
       "authenticationType": "keyBasedAuth",
       "displayName": "Azure Blob Storage",
+      "executionRestrictions": {
+        "apiId": "/providers/microsoft.powerapps/apis/shared_azureblob",
+        "appVer": "3.24045.17",
+        "modifiedOn": "2024-05-06 22:38:40",
+        "policy": "{\"type\":\"action\",\"dataSources\":{\"actions\":[\"deletefile\",\"listfolder_v4\",\"createfile\",\"getfilecontent\"]}}",
+        "version": 1
+      },
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1683/1.0.1683.3685/azureblob/icon.png",
       "id": "/providers/microsoft.powerapps/apis/shared_azureblob",
       "parameterHints": {},
