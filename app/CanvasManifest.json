@@ -85,7 +85,7 @@
       "supportcolumnnamesasidentifiers": true,
       "tabledoesntwraprecords": true,
       "usedisplaynamemetadata": false,
-      "useenforcesavedatalimits": false,
+      "useenforcesavedatalimits": true,
       "useexperimentalcdsconnector": false,
       "useexperimentalsqlconnector": false,
       "useguiddatatypes": false,
