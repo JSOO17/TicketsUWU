@@ -134,8 +134,8 @@
         "apiId": "/providers/microsoft.powerapps/apis/shared_sql",
         "apiVer": 1,
         "appVer": "3.24045.17",
-        "modifiedOn": "2024-05-07 00:13:25",
-        "policy": "{\"type\":\"tabular\",\"dataSources\":{\"[dbo].[ticket]\":[\"post\",\"patch\",\"get\",\"delete\"],\"[dbo].[category]\":[\"get\"]}}",
+        "modifiedOn": "2024-05-07 16:10:39",
+        "policy": "{\"type\":\"tabular\",\"dataSources\":{\"[dbo].[category]\":[\"get\"],\"[dbo].[ticket]\":[\"post\",\"patch\",\"get\",\"delete\"]}}",
         "version": 1
       },
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1683/1.0.1683.3685/sql/icon.png",
@@ -310,8 +310,8 @@
       "executionRestrictions": {
         "apiId": "/providers/microsoft.powerapps/apis/shared_azureblob",
         "appVer": "3.24045.17",
-        "modifiedOn": "2024-05-07 00:13:25",
-        "policy": "{\"type\":\"action\",\"dataSources\":{\"actions\":[\"createfile\",\"getfilecontent\",\"deletefile\",\"listfolder_v4\"]}}",
+        "modifiedOn": "2024-05-07 16:10:39",
+        "policy": "{\"type\":\"action\",\"dataSources\":{\"actions\":[\"getfilecontent\",\"listfolder_v4\",\"deletefile\",\"createfile\"]}}",
         "version": 1
       },
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1683/1.0.1683.3685/azureblob/icon.png",
