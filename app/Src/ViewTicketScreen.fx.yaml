@@ -603,7 +603,7 @@ ViewTicketScreen As screen:
                 DelayItemLoading: =true
                 Height: =451
                 Items: |-
-                    =If(!IsBlank(SelectedTicket.Id), Filter(AzureBlobStorage.ListFolderV4("productsimagesuwu", "shops", {nextPageMarker: "", useFlatListing: true}).value, "shops/" & "/" & SelectedTicket.Id in Path))
+                    =If(!IsBlank(SelectedTicket.Id), Filter(AzureBlobStorage.ListFolderV4("productsimagesuwu", "shops", {nextPageMarker: "", useFlatListing: true}).value, "shops/" & SelectedTicket.Id & "/" in Path))
                 Layout: =Layout.Vertical
                 LoadingSpinner: =LoadingSpinner.Data
                 TemplatePadding: =0
