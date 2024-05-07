@@ -62,25 +62,6 @@
     ],
     "id": "4d8d453a-7127-4d73-94bd-d4669ac27545"
   },
-  "6ebfdf29-7d4b-4e49-bcdc-bf1fed340e4f": {
-    "appActions": [],
-    "connectionRef": {
-      "apiTier": "Premium",
-      "authenticationType": "tokenBasedAuth",
-      "displayName": "Azure Cosmos DB",
-      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1681/1.0.1681.3666/documentdb/icon.png",
-      "id": "/providers/microsoft.powerapps/apis/shared_documentdb",
-      "parameterHints": {},
-      "parameterHintsV2": {}
-    },
-    "datasets": {},
-    "dataSources": [
-      "AzureCosmosDB"
-    ],
-    "dependencies": {},
-    "dependents": [],
-    "id": "6ebfdf29-7d4b-4e49-bcdc-bf1fed340e4f"
-  },
   "7e83a8e7-6309-4679-aec6-77ce47a2d048": {
     "appActions": [
       "Run"
@@ -153,7 +134,7 @@
         "apiId": "/providers/microsoft.powerapps/apis/shared_sql",
         "apiVer": 1,
         "appVer": "3.24045.17",
-        "modifiedOn": "2024-05-06 22:38:40",
+        "modifiedOn": "2024-05-07 00:13:25",
         "policy": "{\"type\":\"tabular\",\"dataSources\":{\"[dbo].[ticket]\":[\"post\",\"patch\",\"get\",\"delete\"],\"[dbo].[category]\":[\"get\"]}}",
         "version": 1
       },
@@ -329,8 +310,8 @@
       "executionRestrictions": {
         "apiId": "/providers/microsoft.powerapps/apis/shared_azureblob",
         "appVer": "3.24045.17",
-        "modifiedOn": "2024-05-06 22:38:40",
-        "policy": "{\"type\":\"action\",\"dataSources\":{\"actions\":[\"deletefile\",\"listfolder_v4\",\"createfile\",\"getfilecontent\"]}}",
+        "modifiedOn": "2024-05-07 00:13:25",
+        "policy": "{\"type\":\"action\",\"dataSources\":{\"actions\":[\"createfile\",\"getfilecontent\",\"deletefile\",\"listfolder_v4\"]}}",
         "version": 1
       },
       "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1683/1.0.1683.3685/azureblob/icon.png",
